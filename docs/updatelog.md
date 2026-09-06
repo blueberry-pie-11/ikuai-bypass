@@ -6,6 +6,9 @@ weight: 9
 
 > 仅包含 Rust 版本（v4.4.100+）的更新记录。历史 Go 版本归档于 [v4.4.13](https://github.com/joyanhui/ikuai-bypass/releases/tag/v4.4.13)。
 
+## v4.4.110
+- 修复ikuai 4.0.310强制https后自签证书无法识别的问题[#153](https://github.com/joyanhui/ikuai-bypass/discussions/153)
+
 ## v4.4.109 (2026-08-03)
 
 - 修复 iKuai 应用市场和 Docker 镜像默认时区未生效的问题，默认时区设为上海 (Asia/Shanghai)，支持在爱快应用市场自定义时区 [#145](https://github.com/joyanhui/ikuai-bypass/discussions/145) [#146](https://github.com/joyanhui/ikuai-bypass/issues/146)
