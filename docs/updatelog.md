@@ -30,7 +30,7 @@ weight: 9
 ## v4.4.106 (2026-06-15)
 
 - 修复 CLI 版本未能嵌入 WebUI 静态编译结果的 bug [#142](https://github.com/joyanhui/ikuai-bypass/issues/142)
-- 修复 OpenWRT LuCI 对 `install` 命令的依赖 [#138](https://github.com/joyanhui/ikuai-bypass/issues/138)
+于4.0.310ttps://github.com/joyanhui/ikuai-bypass/issues/138)
 - 增加 arm64 版本爱快 ipkg 插件支持
 - iOS 端优化
 - 增加对爱快≥ 4.0.210 端口分流的主备模式说明文案和默认值[aaa2c3c](https://github.com/joyanhui/ikuai-bypass/commit/aaa2c3c0b9d6d06086b2fc1b3558210327c8b2fd)

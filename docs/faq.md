@@ -45,6 +45,11 @@ ghproxy URL 前缀重写，仅对 `raw.githubusercontent.com` / `github.com` 生
 > 完整配置示例请参考 [config.yml](https://github.com/joyanhui/ikuai-bypass/blob/main/config.yml)，里面有详细注释。
 
 ---
+## 爱快配置为https 无法登录
+因为爱快4.0.310之后的版本强制开启https，但是默认证书是自签名证书并不在操作系统的信任链内，所以ikuai-bypass也无法识别。
+
+解决方案是 更新ikuai-bypass到4.4.110以后的版本，然后配置项目新增 `ikuai-url-ignore-cert: true` 即可。此参数会忽略爱快访问地址https的证书错误。
+
 
 ## 爱快固件兼容性：端口分流参数变更
 
