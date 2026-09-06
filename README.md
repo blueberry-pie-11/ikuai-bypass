@@ -4,12 +4,13 @@
 
 **iKuai Bypass** 是一款爱快路由器专用的分流规则自动同步工具。它可以自动从网上下载 IP/域名列表并同步到你的路由器，让你的流量自动走正确的线路。比如：主流网站和国内ip流量通过光猫直连、特殊流量走旁路由/网关，可以自动同步更新并兼容手动维护的其他分流规则。
 
-提供三种安装方式：
+提供多种安装方式：
 - **GUI**：图形化工具支持桌面和手机 App，支持 Windows / macOS / Linux 和 Android / iOS
 - **CLI**：命令行 + 可选 WebUI，适合 服务器/OpenWrt / NAS / PVE / Docker 等部署
 - **LuCI 面板**：OpenWrt 用户可通过 LuCI WebUI 管理，IPK 一键安装
+- **爱快插件**：提供爱快插件市场兼容的ipkg格式，可以直接装到爱快插件中
 
-> **版本选择**：爱快 v3.7x 请用 [v4.2.0](https://github.com/joyanhui/ikuai-bypass/releases/tag/v4.2.0)。旧版 Go 已归档至 [v4.4.13](https://github.com/joyanhui/ikuai-bypass/releases/tag/v4.4.13)。老用户升级请阅读[升级指南](https://joyanhui.github.io/ikuai-bypass/v4.4.13-update-to-v4.4.10x)。
+> **版本选择**：爱快 v3.7x 请用 [v4.2.0](https://github.com/joyanhui/ikuai-bypass/releases/tag/v4.2.0)。旧版 Go 已归档至 [v4.4.13](https://github.com/joyanhui/ikuai-bypass/releases/tag/v4.4.13)。老用户升级请阅读[升级指南](https://joyanhui.github.io/ikuai-bypass/faq/#%e9%85%8d%e7%bd%ae%e5%8d%87%e7%ba%a7v4413-%e8%bf%81%e7%a7%bb)。
 
 ---
 <img src="screenshot/index.gif" alt="">
