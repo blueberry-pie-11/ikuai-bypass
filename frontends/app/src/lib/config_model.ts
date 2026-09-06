@@ -12,6 +12,7 @@ export type CmdPreset = {
 
 export type UiConfig = {
   ikuaiUrl: string;
+  ikuaiUrlIgnoreCert: boolean;
   username: string;
   password: string;
   cron: string;
@@ -69,6 +70,7 @@ export type UiConfig = {
 export function defaultUiConfig(): UiConfig {
   return {
     ikuaiUrl: '',
+    ikuaiUrlIgnoreCert: false,
     username: '',
     password: '',
     cron: '',
@@ -146,6 +148,7 @@ export function fromBackendMeta(meta: unknown): { cfg: UiConfig; confPath: strin
   const confPath = asStr(metaObj.conf_path, '');
 
   cfg.ikuaiUrl = asStr(metaObj['ikuai-url'], '');
+  cfg.ikuaiUrlIgnoreCert = !!metaObj['ikuai-url-ignore-cert'];
   cfg.username = asStr(metaObj.username, '');
   cfg.password = asStr(metaObj.password, '');
   cfg.cron = asStr(metaObj.cron, '');
@@ -236,6 +239,7 @@ export function fromBackendMeta(meta: unknown): { cfg: UiConfig; confPath: strin
 export function toBackendPayload(ui: UiConfig): JsonRecord {
   return {
     'ikuai-url': ui.ikuaiUrl,
+    'ikuai-url-ignore-cert': ui.ikuaiUrlIgnoreCert,
     username: ui.username,
     password: ui.password,
     cron: ui.cron,

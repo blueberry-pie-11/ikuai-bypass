@@ -188,6 +188,7 @@ pub fn run() {
 
     let mut fallback_cfg = Config {
         ikuai_url: String::new(),
+        ikuai_url_ignore_cert: false,
         username: String::new(),
         password: String::new(),
         cron: "0 7 * * *".to_string(),

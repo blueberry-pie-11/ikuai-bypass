@@ -220,6 +220,7 @@ const ZH: Dict = {
     "cmd.note.body": "clean 等模式建议在命令行环境中使用。这里的命令生成器负责生成准确参数，便于直接复制执行。",
 
     "config.ikuai_url": "路由器地址",
+    "config.ikuai_ignore_cert": "忽略 HTTPS 证书错误（仅内网自签名证书）",
     "config.username": "用户名",
     "config.password": "密码",
     "config.test_connection": "测试连接",
@@ -606,6 +607,7 @@ const EN: Dict = {
     "cmd.note.body": "Modes like clean are best used in a terminal environment. This builder focuses on generating accurate arguments so you can copy and run them directly.",
 
     "config.ikuai_url": "Router URL",
+    "config.ikuai_ignore_cert": "Ignore HTTPS cert errors (intranet self-signed only)",
     "config.username": "Username",
     "config.password": "Password",
     "config.test_connection": "Test Connection",

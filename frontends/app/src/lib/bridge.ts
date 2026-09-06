@@ -221,19 +221,20 @@ export const bridge = {
     return await fetchJson<LogRecord[]>(`/api/runtime/logs?tail=${tail}`);
   },
 
-  async testIkuaiLogin(baseUrl: string, username: string, password: string): Promise<TestResult> {
+  async testIkuaiLogin(baseUrl: string, username: string, password: string, ignoreCert = false): Promise<TestResult> {
     if (await isTauriReady()) {
       return await tauriInvoke<TestResult>('test_ikuai_login', {
         req: {
           baseUrl,
           username,
           password,
+          ignoreCert,
         },
       });
     }
     return await fetchJson<TestResult>('/api/test/ikuai-login', {
       method: 'POST',
-      body: JSON.stringify({ baseUrl, username, password }),
+      body: JSON.stringify({ baseUrl, username, password, ignore_cert: ignoreCert }),
     });
   },
 

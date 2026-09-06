@@ -680,7 +680,7 @@ async fn login_api_at(
     username: &str,
     password: &str,
 ) -> Result<IKuaiClient, String> {
-    let api = IKuaiClient::new(base_url.to_string())
+    let api = IKuaiClient::new(base_url.to_string(), false)
         .map_err(|e| format!("failed to create IKuaiClient: {e}"))?;
     api.login(username, password).await.map_err(|e| {
         format!(

@@ -262,6 +262,10 @@ import '../styles/global.css';
                               <label class="mb-1.5 block text-sm text-gray-500 dark:text-gray-400" data-i18n="config.ikuai_url">路由器地址</label>
                               <input id="cfgIkuaiUrl" type="text" class="w-full rounded-xl bg-white px-4 py-3 text-base text-gray-900 outline-none dark:bg-gray-800 dark:text-white" placeholder="http://192.168.9.1" />
                             </div>
+                            <div class="mt-3 flex items-center gap-2">
+                              <input type="checkbox" id="cfgIkuaiIgnoreCert" class="h-4 w-4 rounded" />
+                              <label for="cfgIkuaiIgnoreCert" class="text-sm text-gray-600 dark:text-gray-400" data-i18n="config.ikuai_ignore_cert">忽略 HTTPS 证书错误（仅内网自签名证书）</label>
+                            </div>
                             <div class="mt-3 grid grid-cols-2 gap-3">
                               <div>
                                 <label class="mb-1.5 block text-sm text-gray-500 dark:text-gray-400" data-i18n="config.username">用户名</label>

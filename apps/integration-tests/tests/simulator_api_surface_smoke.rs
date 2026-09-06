@@ -13,7 +13,7 @@ use ikb_integration_tests::ikuai_simulator::IKuaiSimulator;
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
 async fn simulator_api_surface_smoke() -> Result<(), String> {
     let simulator = IKuaiSimulator::start("admin", "admin888").await?;
-    let api = IKuaiClient::new(simulator.base_url().to_string())
+    let api = IKuaiClient::new(simulator.base_url().to_string(), false)
         .map_err(|e| format!("failed to create api client: {e}"))?;
     api.login("admin", "admin888")
         .await

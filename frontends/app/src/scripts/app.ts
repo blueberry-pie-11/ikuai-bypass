@@ -1195,6 +1195,7 @@ const initConfigModal = () => {
     const url = (document.getElementById('cfgIkuaiUrl') as HTMLInputElement | null)?.value.trim() || '';
     const user = (document.getElementById('cfgUser') as HTMLInputElement | null)?.value.trim() || '';
     const pass = (document.getElementById('cfgPass') as HTMLInputElement | null)?.value || '';
+    const ignoreCert = (document.getElementById('cfgIkuaiIgnoreCert') as HTMLInputElement | null)?.checked || false;
     const hint = document.getElementById('ikuaiTestHint');
     const btn = document.getElementById('btnTestIkuaiLogin') as HTMLButtonElement | null;
 
@@ -1211,7 +1212,7 @@ const initConfigModal = () => {
     if (hint) hint.textContent = tt('hint.ikuai_testing');
 
     try {
-      const r = await bridge.testIkuaiLogin(url, user, pass);
+      const r = await bridge.testIkuaiLogin(url, user, pass, ignoreCert);
       if (r.ok) {
         showToast(tt('toast.ikuai_connected'));
         if (hint) hint.textContent = tt('hint.ikuai_connected');
@@ -1298,7 +1299,7 @@ const initConfigModal = () => {
     });
   });
 
-  ['cfgWebEnable'].forEach((id) => {
+  ['cfgWebEnable', 'cfgIkuaiIgnoreCert'].forEach((id) => {
     document.getElementById(id)?.addEventListener('change', () => {
       commitBasicConfigToRawYaml();
     });
@@ -1348,6 +1349,8 @@ const bindConfigFields = () => {
   };
   
   setValue('cfgIkuaiUrl', state.cfg.ikuaiUrl);
+  const ignoreCertEl = document.getElementById('cfgIkuaiIgnoreCert') as HTMLInputElement;
+  if (ignoreCertEl) ignoreCertEl.checked = state.cfg.ikuaiUrlIgnoreCert;
   setValue('cfgUser', state.cfg.username);
   setValue('cfgPass', state.cfg.password);
   setValue('cfgProxyMode', state.cfg.proxy.mode);
@@ -1400,6 +1403,8 @@ const syncConfigFromInputs = () => {
   };
   
   state.cfg.ikuaiUrl = getValue('cfgIkuaiUrl');
+  const ignoreCertCheckbox = document.getElementById('cfgIkuaiIgnoreCert') as HTMLInputElement;
+  state.cfg.ikuaiUrlIgnoreCert = ignoreCertCheckbox?.checked || false;
   state.cfg.username = getValue('cfgUser');
   state.cfg.password = getValue('cfgPass');
   const modeRaw = (getValue('cfgProxyMode') || 'system').trim();
@@ -1434,6 +1439,7 @@ const commitBasicConfigToRawYaml = () => {
   syncConfigFromInputs();
   state.rawYaml = updateYamlPaths(state.rawYaml, [
     { path: ['ikuai-url'], value: state.cfg.ikuaiUrl },
+    { path: ['ikuai-url-ignore-cert'], value: state.cfg.ikuaiUrlIgnoreCert },
     { path: ['username'], value: state.cfg.username },
     { path: ['password'], value: state.cfg.password },
     { path: ['cron'], value: state.cfg.cron },
