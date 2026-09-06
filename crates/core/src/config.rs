@@ -224,6 +224,8 @@ impl Default for ProxyConfig {
 pub struct Config {
     #[serde(rename = "ikuai-url")]
     pub ikuai_url: String,
+    #[serde(rename = "ikuai-url-ignore-cert", default)]
+    pub ikuai_url_ignore_cert: bool,
     #[serde(rename = "username")]
     pub username: String,
     #[serde(rename = "password")]

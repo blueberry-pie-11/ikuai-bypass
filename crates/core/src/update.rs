@@ -62,7 +62,7 @@ pub async fn run_update_by_module(
     sink: LogSink,
 ) -> Result<(), UpdateError> {
     let params = resolve_login_params(cfg, cli_login)?;
-    let api = ikuai::IKuaiClient::new(params.base_url.to_string())?;
+    let api = ikuai::IKuaiClient::new(params.base_url.to_string(), cfg.ikuai_url_ignore_cert)?;
 
     let auth = Logger::new("AUTH:登录认证", Arc::clone(&sink));
     auth.info(

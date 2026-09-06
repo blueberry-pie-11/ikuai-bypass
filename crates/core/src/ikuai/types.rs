@@ -140,13 +140,18 @@ pub struct StreamIpPortData {
 }
 
 impl IKuaiClient {
-    pub fn new(base_url: String) -> Result<Self, IKuaiError> {
+    pub fn new(base_url: String, ignore_cert: bool) -> Result<Self, IKuaiError> {
         // 避免网络异常时无限期卡住（比如爱快地址不可达）。
         // Avoid hanging forever when iKuai is unreachable.
-        let builder = reqwest::Client::builder()
+        let mut builder = reqwest::Client::builder()
             .cookie_store(true)
             .connect_timeout(Duration::from_secs(5))
             .timeout(Duration::from_secs(30));
+        // 允许忽略 HTTPS 证书错误（用于内网自签名证书场景）。
+        // Allow ignoring HTTPS certificate errors (for self-signed certs on intranet).
+        if ignore_cert {
+            builder = builder.danger_accept_invalid_certs(true);
+        }
         // iKuai 通常是内网地址，这里强制直连，避免系统/自定义代理干扰。
         // iKuai is typically a LAN address; force direct connection.
         let client = builder.no_proxy().build()?;

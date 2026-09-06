@@ -9,6 +9,7 @@
 #  System auto-adds "IKB" prefix, so tag field should not exceed 11 characters
 #  Tags exceeding the limit will be auto-truncated with a warning log
 ikuai-url: http://192.168.9.1 # 爱快控制台地址，结尾不要加 "/"
+ikuai-url-ignore-cert: true # 允许忽略 HTTPS 证书错误（仅内网自签名证书场景使用，生产环境请勿开启，爱快版本高于4.0.310且没有配置通用CA证书的情况下建议开启）
 username: admin # 爱快登陆用户名
 password: admin888 # 爱快登陆密码
 cron: 0 7 * * * # 更新周期cron表达式，例如 0 7 * * *

@@ -21,6 +21,8 @@ pub struct TestIkuaiLoginRequest {
     pub base_url: String,
     pub username: String,
     pub password: String,
+    #[serde(default)]
+    pub ignore_cert: bool,
 }
 
 #[derive(Debug, Clone, serde::Deserialize)]
@@ -45,7 +47,7 @@ pub async fn test_ikuai_login(req: TestIkuaiLoginRequest) -> TestResult {
         };
     }
 
-    let api = match IKuaiClient::new(base_url) {
+    let api = match IKuaiClient::new(base_url, req.ignore_cert) {
         Ok(v) => v,
         Err(e) => {
             return TestResult {
@@ -400,6 +402,7 @@ pub async fn build_diagnostics_report(
                 base_url: p.base_url,
                 username: p.username,
                 password: p.password,
+                ignore_cert: cfg.ikuai_url_ignore_cert,
             })
             .await;
             out.push_str(&format!(
